@@ -1,0 +1,19 @@
+{
+  "name": "opencode-mcp",
+  "version": "1.0.0",
+  "description": "A zero-dependency CLI for managing OpenCode's MCP server config",
+  "main": "./opencode-mcp.js",
+  "files": [
+    "opencode-mcp.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "opencode-mcp": "./opencode-mcp.js"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "UNLICENSED"
+}
