@@ -1,6 +1,6 @@
 {
   "name": "opencode-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A zero-dependency CLI for managing OpenCode's MCP server config",
   "main": "./opencode-mcp.js",
   "files": [

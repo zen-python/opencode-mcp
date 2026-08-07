@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (2026-08-07)
+
+- chore: bump version to 1.0.1 so npm ci/release automation has package-lock.json available
+
 ## 1.0.0 (2026-08-07)
 
 - feat: add `add-json` command to write OpenCode MCP JSON entries (`opencode-mcp add-json`)

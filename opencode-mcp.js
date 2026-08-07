@@ -20,7 +20,7 @@ const os = require('os');
 const readline = require('readline');
 const https = require('https');
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const SCHEMA_URL = 'https://opencode.ai/config.json';
 
 // ---------------------------------------------------------------------------
@@ -692,28 +692,12 @@ Local server (spawned as a subprocess, e.g. via npx/bunx):
 {"type":"local","command":["npx","-y","<real-package-name>"],"environment":{"OPTIONAL_KEY":"placeholder-or-{env:VAR}"}}
 
 Remote server (hosted, reached over HTTP):
-{"type":"remote","url":"https://real-hostname/real-path","headers":{"OPTIONAL_HEADER":"{env:VAR}"}}
-
-Rules:
-- Only include "environment"/"headers" if the server actually needs them.
-- Use "{env:SOME_VAR_NAME}" as a placeholder for secrets -- never invent a
-  fake API key value.
-- If you are not confident of the exact package name or URL, still return
-  your best-guess JSON, but add a top-level "confidence":"low" field and a
-  "note" field explaining the uncertainty.
-- Do not wrap the JSON in markdown code fences. Output the JSON object and
-  nothing else.`;
+{"type":"remote","url":"https://real-hostname/real-path","headers":{"OPTIONAL_HEADER":"{env:VAR}"}}`;
 
   const input = `MCP server name: ${name}\n${description ? `Description: ${description}` : '(no extra description given)'}`;
 
-  const body = {
-    model,
-    instructions,
-    input,
-  };
-  if (!flags.noSearch) {
-    body.tools = [{ type: 'web_search' }];
-  }
+  const body = { model, instructions, input };
+  if (!flags.noSearch) body.tools = [{ type: 'web_search' }];
 
   info(`Asking ${model}${flags.noSearch ? '' : ' (with web search)'} for the "${name}" MCP config...`);
 
@@ -752,6 +736,7 @@ Rules:
   } else {
     die(`Model returned an unknown type "${parsed.type}"`);
   }
+
   entry.enabled = true;
 
   info(`\nProposed config for "${name}":`);
