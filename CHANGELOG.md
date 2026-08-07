@@ -1,8 +1,8 @@
 # Changelog
 
-## 1.0.1 (2026-08-07)
+## 1.11.1 (2026-08-07)
 
-- chore: bump version to 1.0.1 so npm ci/release automation has package-lock.json available
+- chore: bump version above existing npm latest to allow publishing and ensure `bin` is packaged correctly
 
 ## 1.0.0 (2026-08-07)
 

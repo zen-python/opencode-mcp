@@ -36,6 +36,6 @@ jobs:
           node-version: 26
           registry-url: https://registry.npmjs.org/
       - run: npm ci || npm install
-      - run: npm publish
+      - run: npm publish --tag latest
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

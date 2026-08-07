@@ -20,7 +20,7 @@ const os = require('os');
 const readline = require('readline');
 const https = require('https');
 
-const VERSION = '1.0.1';
+const VERSION = '1.11.1';
 const SCHEMA_URL = 'https://opencode.ai/config.json';
 
 // ---------------------------------------------------------------------------
@@ -697,7 +697,9 @@ Remote server (hosted, reached over HTTP):
   const input = `MCP server name: ${name}\n${description ? `Description: ${description}` : '(no extra description given)'}`;
 
   const body = { model, instructions, input };
-  if (!flags.noSearch) body.tools = [{ type: 'web_search' }];
+  if (!flags.noSearch) {
+    body.tools = [{ type: 'web_search' }];
+  }
 
   info(`Asking ${model}${flags.noSearch ? '' : ' (with web search)'} for the "${name}" MCP config...`);
 
@@ -736,7 +738,6 @@ Remote server (hosted, reached over HTTP):
   } else {
     die(`Model returned an unknown type "${parsed.type}"`);
   }
-
   entry.enabled = true;
 
   info(`\nProposed config for "${name}":`);
