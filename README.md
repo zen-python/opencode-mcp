@@ -94,6 +94,9 @@ opencode-mcp add --oauth-client-id "{env:MY_MCP_CLIENT_ID}" \
     --oauth-client-secret "{env:MY_MCP_CLIENT_SECRET}" \
     my-oauth-server https://mcp.example.com/mcp
 
+# Remote MCP server using raw OpenCode JSON (no translation)
+opencode-mcp add-json github '{"type":"remote","url":"https://api.githubcopilot.com/mcp","headers":{"Authorization":"Bearer YOUR_GITHUB_PAT"},"oauth":false}'
+
 # Remote, API-key style (disable OAuth auto-detection)
 opencode-mcp add --no-oauth -H "Authorization: Bearer {env:MY_API_KEY}" \
     my-api-key-server https://mcp.example.com
